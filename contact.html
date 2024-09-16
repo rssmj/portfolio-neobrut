@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact | Dev Name</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Move theme initialization script to the top of the head -->
+    <script>
+      (function () {
+        const userPreference = localStorage.getItem('theme');
+        const systemPreference = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches
+          ? 'dark'
+          : 'light';
+        const theme = userPreference || systemPreference;
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- JetBrains Mono Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- External JavaScript -->
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav>
+      <div class="nav-container">
+        <h1><a href="index.html">Dev Name</a></h1>
+        <button id="nav-toggle" aria-label="Toggle Navigation">
+          <span class="nav-icon">🍔</span>
+        </button>
+        <div class="nav-links" id="nav-menu">
+          <ul>
+            <li><a href="about.html" class="btn">About</a></li>
+            <li><a href="projects.html" class="btn">Projects</a></li>
+            <li><a href="contact.html" class="btn">Contact</a></li>
+            <li>
+              <button id="theme-toggle" class="btn" aria-label="Toggle Theme">
+                <span id="theme-icon">🌙</span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Contact Section -->
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:youremail@example.com" class="btn"
+            >youremail@example.com</a
+          >
+        </p>
+        <!-- Optionally add a contact form or additional contact methods -->
+      </section>
+    </main>
+
+    <footer>&copy; 2023 Dev Name</footer>
+  </body>
+</html>
