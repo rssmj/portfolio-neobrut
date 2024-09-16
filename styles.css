@@ -1,0 +1,363 @@
+/* Box Sizing for Consistency */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Light Theme */
+:root {
+  --bg-color: #e3dff2;
+  --text-color: #000;
+  --border-color: #000;
+  --button-bg-color: #bd52eb;
+  --button-text-color: #fff;
+  --hover-bg-color: #a81be4; /* Hover Color for Light Theme */
+  --focus-ring-color: rgba(
+    168,
+    27,
+    228,
+    0.6
+  ); /* Semi-transparent for better aesthetics */
+  --grid-color: rgba(255, 255, 255, 0.1); /* More subtle */
+  --dot-color: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* Increase the opacity of the dots for visibility */
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --bg-color: #1d1f27;
+  --text-color: #eeefe9;
+  --border-color: #000;
+  --button-bg-color: #bd52eb;
+  --button-text-color: #fff;
+  --hover-bg-color: #8e24aa; /* Hover Color for Dark Theme */
+  --focus-ring-color: rgba(
+    142,
+    36,
+    170,
+    0.6
+  ); /* Semi-transparent for better aesthetics */
+  --grid-color: rgba(255, 255, 255, 0.03); /* Subtle grid color */
+  --dot-color: rgba(255, 255, 255, 0.1); /* Subtle dot color */
+}
+
+/* General Styles */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dot grid background element */
+#background {
+  position: fixed; /* Prevent scrolling issues */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 20px);
+  grid-template-rows: repeat(auto-fill, 20px);
+  gap: 20px;
+}
+
+.dot {
+  width: 1px; /* Smaller dot size */
+  height: 1px;
+  background-color: var(--dot-color);
+  border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Keyframes for subtle fade in and out of dots */
+@keyframes subtle-dot-glow {
+  0%,
+  100% {
+    background-color: var(--dot-color);
+  }
+  50% {
+    background-color: rgba(255, 255, 255, 0.5); /* Subtle opacity change */
+  }
+}
+
+/* Navigation Bar */
+nav {
+  background-color: var(--bg-color);
+  border-bottom: 4px solid var(--border-color);
+  box-shadow: 2px 2px 0px 0px #000;
+  border-radius: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+/* Site Title */
+nav h1 a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Navigation Toggle Button */
+#nav-toggle {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 28px;
+  color: var(--text-color);
+  display: none; /* Hidden on desktop */
+}
+
+.nav-icon {
+  font-size: 28px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links ul li {
+  margin: 0 10px;
+}
+
+/* Button Styles */
+.btn {
+  text-decoration: none;
+  color: var(--button-text-color);
+  background-color: var(--button-bg-color);
+  border: 2px solid var(--border-color);
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  box-shadow: 2px 2px 0px 0px #000;
+  transition: transform 0.1s ease-in-out, background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  font-size: 16px;
+}
+
+/* Specific Hover Effects for Navigation Links */
+.nav-links ul li a.btn:hover,
+.btn:hover {
+  transform: translate(2px, 2px);
+  background-color: var(--hover-bg-color);
+  transition: transform 0.1s ease-in-out, background-color 0.3s ease;
+}
+
+/* Global Button Active Effects */
+.btn:active {
+  transform: translate(2px, 2px);
+}
+
+/* Theme Toggle Button Specific Styles */
+#theme-toggle.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Disabling hover effect for the theme toggle button */
+#theme-toggle.btn:hover {
+  transform: translate(0px, 0px);
+}
+
+/* Icon Size */
+#theme-icon {
+  font-size: 18px;
+}
+
+/* Accessibility Enhancements */
+.btn:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 2px var(--focus-ring-color); /* Custom focus ring */
+}
+
+/* Main Content */
+main {
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Sections */
+section {
+  margin-bottom: 50px;
+}
+
+section h2 {
+  font-size: 36px;
+  border-bottom: 3px solid var(--border-color);
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+/* Image Card with Dev Emoji */
+.image-card {
+  width: 150px;
+  height: 150px;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  border: 4px solid var(--border-color);
+  border-radius: 50%;
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px auto;
+}
+
+/* Image Card Hover Effects */
+.image-card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 6px 6px 0px 0px #000;
+}
+
+section#about p,
+section#home p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Home Section */
+section#home {
+  text-align: center;
+}
+
+section#home .btn {
+  padding: 15px 25px;
+}
+
+section#about {
+  text-align: center;
+}
+
+/* Projects */
+.project {
+  border: 4px solid var(--border-color);
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0px 0px #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background-color: var(--bg-color);
+  border-top: 4px solid var(--border-color);
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 2px -2px 0px 0px #000;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  #nav-toggle {
+    display: block;
+  }
+
+  .nav-container {
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+  }
+
+  .nav-links.show {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .nav-links ul li {
+    margin: 12px 20px;
+  }
+
+  .nav-links a.btn,
+  .nav-links button#theme-toggle.btn {
+    width: auto;
+    text-align: right;
+  }
+
+  nav h1 a {
+    font-size: 28px;
+  }
+
+  .image-card {
+    width: 120px;
+    height: 120px;
+    font-size: 80px;
+  }
+
+  section#about p,
+  section#home p {
+    font-size: 16px;
+  }
+
+  .project {
+    padding: 15px;
+  }
+
+  .project h3 {
+    font-size: 20px;
+  }
+
+  .project p {
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 15px;
+    font-size: 14px;
+    border-top: 4px solid var(--border-color);
+    box-shadow: 2px -2px 0px 0px #000;
+    border-radius: 5px;
+  }
+}
+
+/* Accessibility Enhancements */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--focus-ring-color);
+}
